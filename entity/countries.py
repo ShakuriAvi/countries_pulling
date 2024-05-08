@@ -11,7 +11,8 @@ from typing import Dict, List, Any
 class Countries(Source):
     api_url = "https://restcountries.com/v3.1/all"
     fields = ["name", "continents", "languages", "population"]
-
+    partition_key = 'region'
+    db_name = 'countries_world'
     def __init__(self):
         super().__init__()
         self.countries: List[Dict[str, str]] = []
